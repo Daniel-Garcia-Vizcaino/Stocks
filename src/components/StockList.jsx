@@ -41,7 +41,7 @@ export const StockList = () => {
   }, [])
 
   
-  return <div>
+  return (<div>
     <table className="table hover mt-5">
       <thead style={{color: "rgb(79,89,102)"}}>
         <tr>
@@ -55,6 +55,22 @@ export const StockList = () => {
           <th scope="col">Pclose</th>
         </tr>
       </thead>
+      <tbody>
+        {stock.map((stockData) => {
+          return (
+            <tr className="table-row" key={stockData.symbol}>
+              <th scope="row">{stockData.symbol}</th>
+              <td>{stockData.data.c}</td>
+              <td>{stockData.data.d}</td>
+              <td>{stockData.data.dp}</td>
+              <td>{stockData.data.h}</td>
+              <td>{stockData.data.l}</td>
+              <td>{stockData.data.o}</td>
+              <td>{stockData.data.pc}</td>
+            </tr>    
+          )
+        })}
+      </tbody>
     </table>
-  </div>
+  </div>)
 } 
