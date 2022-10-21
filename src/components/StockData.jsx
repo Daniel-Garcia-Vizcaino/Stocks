@@ -23,5 +23,43 @@ export const StockData = ({symbol}) => {
     fetchData()
     return () => (isMounted = false)
   }, [symbol])  
-  return <h2>stockdata</h2>
+  return <div>
+    {stockData && (
+      <div className = "row border bg-white rounded shadow-sm p-4 mt-5">
+        <div className="col">
+          <div>
+            <span className="fw-bold">Name: </span>
+          </div>
+          <div>
+            <span className="fw-bold">Country: </span>
+          </div>
+          <div>
+            <span className="fw-bold">Ticker: </span>
+          </div>
+        </div>
+        <div className="col">
+        <div>
+            <span className="fw-bold">Exchange: </span>
+          </div>
+          <div>
+            <span className="fw-bold">Industry: </span>
+          </div>
+          <div>
+            <span className="fw-bold">IPO: </span>
+          </div>
+        </div>
+        <div className="col">
+        <div>
+            <span className="fw-bold">MarketCap: </span>
+          </div>
+          <div>
+            <span className="fw-bold">Shares Outstanding: </span>
+          </div>
+          <div>
+            <span className="fw-bold">Url: </span>
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
 }
