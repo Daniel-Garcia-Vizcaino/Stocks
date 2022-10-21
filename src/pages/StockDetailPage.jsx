@@ -5,9 +5,10 @@ import { StockChart } from "../components/StockChart"
 
 const formatData = (data) => {
   return data.t.map((el, index) => {
+    let num = data.c[index]
     return {
       x: el * 1000,
-      y: Math.floor(data.c[index])
+      y: num.toFixed(2)
     }
   })
 }
