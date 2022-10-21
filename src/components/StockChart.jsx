@@ -30,9 +30,21 @@ export const StockChart = ({chartData, symbol}) => {
       }
     }
   }
+  const determineTimeFormat = () => {
+    switch (dateFormat) {
+      case "24h":
+        return day
+      case "7d":
+        return week
+      case "1y":
+        return year
+      default:
+        return day
+    }
+  }
   const series = [{
     name: symbol,
-    data: day
+    data: determineTimeFormat()
   }]
   
   return <div className="mt-5 p-4 shadow-sm bg-white">
