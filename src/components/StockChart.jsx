@@ -1,8 +1,11 @@
 import Chart from "react-apexcharts"
 import { useState } from "react"
+import { useNavigate } from 'react-router-dom'
+
 export const StockChart = ({chartData, symbol}) => {
   const [dateFormat, setDateFormat] = useState("24h")
   const {day, week, year} = chartData
+  const navigate = useNavigate()
 
   const determineTimeFormat = () => {
     switch (dateFormat) {
@@ -60,13 +63,18 @@ export const StockChart = ({chartData, symbol}) => {
       return classes + " btn-outline-primary" 
     }
   }
-  
+
+  const closeChart = () => {
+    navigate("/")
+  }
+
   return <div className="mt-5 p-4 shadow-sm bg-white">
     <Chart options={options} series={series} type="area" width="100%"/>
     <div>
       <button className={renderButtonSelect("24h")} onClick={() => setDateFormat("24h")}>24h</button>
       <button className={renderButtonSelect("7d")} onClick={() => setDateFormat("7d")}>7d</button>
       <button className={renderButtonSelect("1y")} onClick={() => setDateFormat("1y")}>1y</button>
+      <button className="btn btn-danger float-end" onClick={() => closeChart()}>Close</button>
     </div>
   </div>
 }
